@@ -2,9 +2,13 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import React from 'react'
 import EditableTimer from '../Components/EditableTimer';
 import ToggleableTimerForm from '../Components/ToggleableTimerForm';
+import { useSelector } from 'react-redux';
 
 const Timer = ({route}:any) => {
   const { title } = route.params;
+  const {counter}  = useSelector((state:any)=> state)
+  console.log(counter)
+  
   return (
     <View style={styles.appContainer}>
       <View style={styles.titleContainer}>
