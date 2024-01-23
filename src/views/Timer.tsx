@@ -3,11 +3,11 @@ import React from 'react'
 import EditableTimer from '../Components/EditableTimer';
 import ToggleableTimerForm from '../Components/ToggleableTimerForm';
 import { useSelector } from 'react-redux';
+import { TimerData } from '../types/types';
 
-const Timer = ({route}:any) => {
-  const { title } = route.params;
-  const {counter}  = useSelector((state:any)=> state)
-  console.log(counter)
+const Timer = () => {
+  const {ListTimers}  = useSelector((state:any)=> state)
+  console.log(ListTimers)
   
   return (
     <View style={styles.appContainer}>
@@ -16,24 +16,17 @@ const Timer = ({route}:any) => {
       </View>
     <ScrollView style={styles.timerList}>
 
-      <ToggleableTimerForm isOpen={false} />
+      <ToggleableTimerForm  />
 
-      <EditableTimer
-        id="1"
-        title="Mow the lawn"
-        project="House Chores"
-        elapsed="8986300"
-        editFormOpen={false}
-        isRunning
-      />
-      <EditableTimer
-        id="2"
-        title="Bake squash"
-        project="Kitchen Chores"
-        elapsed="3890985"
-        editFormOpen
-        isRunning
-      />
+      {ListTimers.map((item:TimerData) => (
+        <EditableTimer
+          id={item.id}
+          title={item.title}
+          project={item.project}
+          elapsed={item.elapsed}
+          isRunning={item.isRunning}
+        />
+        ))}
     </ScrollView>
     </View>
   )

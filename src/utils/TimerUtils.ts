@@ -1,7 +1,7 @@
-export function millisecondsToHuman(ms: string): string {
+export function millisecondsToHuman(ms: number): string {
     // Convertir el string a un número
-    let milliseconds = parseInt(ms);
-    
+    let milliseconds = ms;
+  
     // Calcular las horas, minutos y segundos
     let hours : string | number = Math.floor(milliseconds / 3600000);
     milliseconds %= 3600000;

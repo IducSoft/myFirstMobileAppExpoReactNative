@@ -4,7 +4,7 @@ import TimerButton from './TimerButton';
 import { millisecondsToHuman } from '../utils/TimerUtils';
 
 
-export default function Timer({ title, project, elapsed }: {title:string, project:string, elapsed:string}) {
+export default function Timer({isRunning, id, title, project, elapsed }: {isRunning:boolean,id:string ,title:string, project:string, elapsed:number}) {
     const elapsedString = millisecondsToHuman(elapsed);
     return (
         <View style={styles.timerContainer}>

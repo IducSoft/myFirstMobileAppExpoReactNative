@@ -4,8 +4,12 @@ import TimerButton from './TimerButton';
 
 
 
-export default function TimerForm({ id, title, project }:{id:string, title:string, project:string}) {
+export default function TimerForm({ id, title, project }:{id?:string, title?:string, project?:string}) {
+
+
+
     const submitText = id ? 'Update' : 'Create';
+    
     return (
         <View style={styles.formContainer}>
             <View style={styles.attributeContainer}>

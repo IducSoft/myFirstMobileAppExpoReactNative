@@ -11,6 +11,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import CounterSlice from "./CounterSlice";
+import ListTimersSlice from "./ListTimersSlice";
 
 
 
@@ -23,6 +24,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   // tus reducers van aquí
     counter: CounterSlice,
+    ListTimers: ListTimersSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
