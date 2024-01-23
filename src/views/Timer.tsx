@@ -8,7 +8,7 @@ import { TimerData } from '../types/types';
 const Timer = () => {
   const {ListTimers}  = useSelector((state:any)=> state)
   console.log(ListTimers)
-  
+
   return (
     <View style={styles.appContainer}>
       <View style={styles.titleContainer}>
@@ -18,15 +18,20 @@ const Timer = () => {
 
       <ToggleableTimerForm  />
 
-      {ListTimers.map((item:TimerData) => (
-        <EditableTimer
-          id={item.id}
-          title={item.title}
-          project={item.project}
-          elapsed={item.elapsed}
-          isRunning={item.isRunning}
-        />
-        ))}
+      {ListTimers.map((item:TimerData, key:number) => {
+        return(
+          <View key={key}>
+            <EditableTimer
+              id={item.id}
+              title={item.title}
+              project={item.project}
+              elapsed={item.elapsed}
+              isRunning={item.isRunning}
+            />
+          </View>
+          
+        )
+      })}
     </ScrollView>
     </View>
   )

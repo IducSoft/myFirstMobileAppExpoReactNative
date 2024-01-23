@@ -1,5 +1,4 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+import { combineReducers, configureStore } from "@reduxjs/toolkit";// defaults to localStorage for web
 import {
   persistStore,
   persistReducer,
@@ -12,12 +11,12 @@ import {
 } from "redux-persist";
 import CounterSlice from "./CounterSlice";
 import ListTimersSlice from "./ListTimersSlice";
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const persistConfig = {
     key: "root",
-    storage,
+    storage: AsyncStorage,
     version:1
 };
 
