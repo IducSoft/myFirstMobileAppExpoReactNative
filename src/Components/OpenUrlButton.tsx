@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Image, Linking, Pressable, StyleSheet } from 'react-native';
+import { Button, Image, Linking, Pressable, StyleSheet, Text } from 'react-native';
 
 const OpenURLButton = ({url, title}:{url:string, title:string}) => {
     const handlePress = async () => {
@@ -12,10 +12,11 @@ const OpenURLButton = ({url, title}:{url:string, title:string}) => {
         }
     };
 
- return (<Pressable style={styles.Pressable}  onPress={handlePress}>
-            {title}
-            <Image source={require("../../assets/hacker.png")} style={styles.imageIcon} />
-        </Pressable>);
+    return (
+    <Pressable style={styles.Pressable}  onPress={handlePress}>
+        <Text>{title}</Text>
+        <Image source={require("../../assets/hacker.png")} style={styles.imageIcon} />
+    </Pressable>);
 };
 
 const styles = StyleSheet.create({

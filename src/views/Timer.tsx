@@ -5,9 +5,12 @@ import ToggleableTimerForm from '../Components/ToggleableTimerForm';
 import { useSelector } from 'react-redux';
 import { TimerData } from '../types/types';
 
+
 const Timer = () => {
   const {ListTimers}  = useSelector((state:any)=> state)
   console.log(ListTimers)
+
+  
 
   return (
     <View style={styles.appContainer}>
@@ -16,7 +19,7 @@ const Timer = () => {
       </View>
     <ScrollView style={styles.timerList}>
 
-      <ToggleableTimerForm  />
+      <ToggleableTimerForm/>
 
       {ListTimers.map((item:TimerData, key:number) => {
         return(

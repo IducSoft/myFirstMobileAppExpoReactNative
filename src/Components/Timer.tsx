@@ -2,9 +2,10 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import TimerButton from './TimerButton';
 import { millisecondsToHuman } from '../utils/TimerUtils';
+import { TimerData } from '../types/types';
 
 
-export default function Timer({isRunning, id, title, project, elapsed }: {isRunning:boolean,id:string ,title:string, project:string, elapsed:number}) {
+export default function Timer({isRunning, id, title, project, elapsed }: TimerData) {
     const elapsedString = millisecondsToHuman(elapsed);
     return (
         <View style={styles.timerContainer}>

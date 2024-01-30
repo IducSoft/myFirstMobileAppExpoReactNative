@@ -2,8 +2,9 @@ import { StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import TimerForm from './TimerForm'
 import Timer from './Timer'
+import { TimerData } from '../types/types'
 
-export default function EditableTimer({id,title,project,elapsed,isRunning}:{id:string, title:string, project:string, elapsed:number, isRunning:boolean}) {
+export default function EditableTimer({id,title,project,elapsed,isRunning}:TimerData) {
 
     const [editFormOpen, setEditFormOpen] = useState(false)
 

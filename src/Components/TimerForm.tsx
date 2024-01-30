@@ -1,27 +1,32 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput } from 'react-native';
 import TimerButton from './TimerButton';
+import { newTimer } from '../utils/TimerUtils';
+import { addNewTimer } from '../store/ListTimersSlice';
+import { useDispatch } from 'react-redux';
+import { TimerData } from '../types/types';
 
 
+export default function TimerForm({onFormClose, id, title, project }:{ onFormClose?: any, id?:string, title?:string, project?:string}) {
 
-export default function TimerForm({ id, title, project }:{id?:string, title?:string, project?:string}) {
-
+    const dispatch = useDispatch()
     const [state, setState] = useState(
         {
-            title: id ? title : '',
-            project: id ? project : '',
+            title:'',
+            project:'',
         }
     )
-    console.log(state)
-
-     const handleChange = (field:string, value: string) => {
+    const handleChange = (field:string, value: string) => {
         setState(prevState => ({
         ...prevState,
         [field]: value
-    }));
- };
+        }));
+    };
 
-    
+    const handleCreateFormSubmit = () => {
+        dispatch(addNewTimer(newTimer(state)))
+        onFormClose();
+    };
 
     const submitText = id ? 'Update' : 'Create';
     
@@ -50,12 +55,24 @@ export default function TimerForm({ id, title, project }:{id?:string, title?:str
                 </View>
             </View>
             <View style={styles.buttonGroup}>
-                <TimerButton onPress={()=>{console.log("hola")}} small color="#21BA45" title={submitText} />
-                <TimerButton onPress={()=>{console.log("hola")}} small color="#DB2828" title="Cancel" />
+                <TimerButton 
+                    onPress={handleCreateFormSubmit} 
+                    small 
+                    color="#21BA45" 
+                    title={submitText} 
+                />
+                <TimerButton 
+                    onPress={onFormClose} 
+                    small 
+                    color="#DB2828" 
+                    title="Cancel"
+                />
             </View>
         </View>
     );
 }
+
+
 const styles = StyleSheet.create({
     formContainer: {
         backgroundColor: 'white',

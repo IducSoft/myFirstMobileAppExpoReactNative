@@ -1,9 +1,12 @@
-export function millisecondsToHuman(ms: number): string {
+import { TimerData } from "../types/types";
+import { random } from "./CharacterRandom";
+
+export function millisecondsToHuman(ms: any): string {
     // Convertir el string a un número
     let milliseconds = ms;
   
     // Calcular las horas, minutos y segundos
-    let hours : string | number = Math.floor(milliseconds / 3600000);
+    let hours : string | number  = Math.floor(milliseconds / 3600000);
     milliseconds %= 3600000;
     let minutes : string | number = Math.floor(milliseconds / 60000);
     milliseconds %= 60000;
@@ -17,3 +20,15 @@ export function millisecondsToHuman(ms: number): string {
     // Retornar el tiempo en formato HH:MM:SS
     return hours + ":" + minutes + ":" + seconds;
 }
+
+
+export const newTimer = (attrs:TimerData) => {
+    const timer:TimerData = {
+        title: attrs.title || 'Timer',
+        project: attrs.project || 'Project',
+        id: random(),
+        elapsed: 0,
+        isRunning: false,
+    };
+    return timer;
+};

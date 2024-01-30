@@ -8,14 +8,14 @@ let initialState: ListTimers = [
         title: 'Mow the lawn',
         project: 'House Chores',
         id: random(),
-        elapsed: 1235456099,
+        elapsed: 0,
         isRunning: true,
     },
     {
         title: 'Bake squash',
         project: 'Kitchen Chores',
         id: random(),
-        elapsed: 1273998,
+        elapsed: 0,
         isRunning: true,
     },
 ]
@@ -25,9 +25,12 @@ export const ListTimersReducer = createSlice({
     initialState: initialState,
     reducers:{
         //aqui van los reducers
+        addNewTimer:(state, payload)=>{
+            state.push(payload.payload);
+        }
     }
 })
 
-export const {  } = ListTimersReducer.actions;
+export const { addNewTimer } = ListTimersReducer.actions;
 
 export default ListTimersReducer.reducer;

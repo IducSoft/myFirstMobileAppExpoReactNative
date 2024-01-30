@@ -4,11 +4,11 @@ import { FlatList, TouchableOpacity, Text, View, StyleSheet } from 'react-native
 
 const ScreenWithButtons = ({navigation}:any) => {
     const buttonsData = ['Timer', 'Trackers', 'Impeach', 'weather']; // Tus datos aquí
-    const renderItem = ({ item}:{item:string}) => {
+    const renderItem = ({item}:{item:string}) => {
         return (
-        <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate(item, {title:"hola que tal"})}>
-            <Text style={styles.text}>{item}</Text>
-        </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate(item, {title:"hola que tal"})}>
+                <Text style={styles.text}>{item}</Text>
+            </TouchableOpacity>
         );
     }
     
@@ -16,7 +16,7 @@ const ScreenWithButtons = ({navigation}:any) => {
         <View style={styles.container}>
             <FlatList
             data={buttonsData}
-            keyExtractor={(item, index) => index.toString()}
+            keyExtractor={(index) => index.toString()}
             renderItem={(item)=> renderItem(item)}
             numColumns={2}
             style={styles.ButtonsContatiner}
