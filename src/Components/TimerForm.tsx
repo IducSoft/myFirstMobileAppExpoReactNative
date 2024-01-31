@@ -4,12 +4,11 @@ import TimerButton from './TimerButton';
 import { newTimer } from '../utils/TimerUtils';
 import { addNewTimer } from '../store/ListTimersSlice';
 import { useDispatch } from 'react-redux';
-import { TimerData } from '../types/types';
 
 
 export default function TimerForm({onFormClose, id, title, project }:{ onFormClose?: any, id?:string, title?:string, project?:string}) {
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const [state, setState] = useState(
         {
             title:'',
