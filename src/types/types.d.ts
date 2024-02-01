@@ -8,4 +8,3 @@ export type TimerData = {
 }
 
 export type ListTimers = TimerData[];
-

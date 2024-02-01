@@ -5,7 +5,7 @@ import { millisecondsToHuman } from '../utils/TimerUtils';
 import { TimerData } from '../types/types';
 
 
-export default function Timer({isRunning, id, title, project, elapsed }: TimerData) {
+export default function Timer({isRunning, id, title, project, elapsed, onEditPress }: {isRunning:boolean, id:string, project:string, title:string, elapsed:number, onEditPress:()=> void}) {
     const elapsedString = millisecondsToHuman(elapsed);
     return (
         <View style={styles.timerContainer}>
@@ -13,7 +13,7 @@ export default function Timer({isRunning, id, title, project, elapsed }: TimerDa
             <Text>{project}</Text>
             <Text style={styles.elapsedTime}>{elapsedString}</Text>
             <View style={styles.buttonGroup}>
-                <TimerButton onPress={()=>{console.log("hola")}} color="blue" small title="Edit" />
+                <TimerButton onPress={onEditPress} color="blue" small title="Edit"  />
                 <TimerButton onPress={()=>{console.log("hola")}} color="blue" small title="Remove" />
             </View>
             <TimerButton small onPress={()=>{console.log("hola")}} color="#21BA45" title="Start" />

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ListTimers } from "../types/types";
+import { ListTimers, TimerData } from "../types/types";
 import { random } from "../utils/CharacterRandom";
 
 
@@ -27,10 +27,22 @@ export const ListTimersReducer = createSlice({
         //aqui van los reducers
         addNewTimer:(state, payload)=>{
             state.push(payload.payload);
-        }
+        },
+        editTimer:(state, {payload})=>{
+            console.log(payload)
+            const arrayResult:ListTimers = [];
+            const element:TimerData = payload.timer;
+            state.map((item)=>{
+                if(payload.id !== item.id){
+                    arrayResult.push({...item})
+                }
+            })
+            console.log(arrayResult)
+            
+        },
     }
 })
 
-export const { addNewTimer } = ListTimersReducer.actions;
+export const { addNewTimer, editTimer } = ListTimersReducer.actions;
 
 export default ListTimersReducer.reducer;

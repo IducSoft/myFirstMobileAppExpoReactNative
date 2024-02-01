@@ -6,13 +6,13 @@ import { addNewTimer } from '../store/ListTimersSlice';
 import { useDispatch } from 'react-redux';
 
 
-export default function TimerForm({onFormClose, id, title, project }:{ onFormClose?: any, id?:string, title?:string, project?:string}) {
-
+export default function TimerForm({onFormSubmit, onFormClose, id, title, project }:{onFormSubmit?:any, onFormClose?: any, id?:string, title?:string, project?:string}) {
+    
     const dispatch = useDispatch();
     const [state, setState] = useState(
         {
-            title:'',
-            project:'',
+            title: title || '',
+            project: project || '',
         }
     )
     const handleChange = (field:string, value: string) => {
@@ -54,12 +54,18 @@ export default function TimerForm({onFormClose, id, title, project }:{ onFormClo
                 </View>
             </View>
             <View style={styles.buttonGroup}>
-                <TimerButton 
+                {!id ? <TimerButton 
                     onPress={handleCreateFormSubmit} 
                     small 
                     color="#21BA45" 
                     title={submitText} 
-                />
+                /> : <TimerButton 
+                    onPress={()=>onFormSubmit(state)}
+                    small 
+                    color="#21BA45" 
+                    title={submitText} 
+                />  }
+                
                 <TimerButton 
                     onPress={onFormClose} 
                     small 
