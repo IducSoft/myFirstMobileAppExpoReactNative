@@ -18,31 +18,45 @@ let initialState: ListTimers = [
         elapsed: 0,
         isRunning: true,
     },
-]
+];
+
 
 export const ListTimersReducer = createSlice({
     name: "ListTimers",
-    initialState: initialState,
+    initialState,
     reducers:{
         //aqui van los reducers
         addNewTimer:(state, payload)=>{
             state.push(payload.payload);
         },
         editTimer:(state, {payload})=>{
-            console.log(payload)
-            const arrayResult:ListTimers = [];
-            const element:TimerData = payload.timer;
-            state.map((item)=>{
-                if(payload.id !== item.id){
-                    arrayResult.push({...item})
+            //console.log(payload.timer)
+            for (let index = 0; index < state.length; index++) {
+                const element = {...state[index]};
+                if(element.id === payload.id){
+                    //console.log(element);
+                    state[index] = {...element, ...payload.timer}
                 }
-            })
-            console.log(arrayResult)
+            }
+            
+        },
+        removeTimer: (state, {payload})=>{
+            const arrayResult:ListTimers = [];
+            for (let index = 0; index < state.length; index++) {
+                const element = {...state[index]};
+                if(element.id !== payload){
+                    //console.log(element);
+                    arrayResult.push(element)
+                    
+                }
+            }
+            return state = arrayResult;
+            
             
         },
     }
 })
 
-export const { addNewTimer, editTimer } = ListTimersReducer.actions;
+export const { addNewTimer, editTimer, removeTimer } = ListTimersReducer.actions;
 
 export default ListTimersReducer.reducer;

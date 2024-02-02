@@ -2,11 +2,17 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import TimerButton from './TimerButton';
 import { millisecondsToHuman } from '../utils/TimerUtils';
-import { TimerData } from '../types/types';
+import { useDispatch } from 'react-redux';
+import { removeTimer } from '../store/ListTimersSlice';
 
 
 export default function Timer({isRunning, id, title, project, elapsed, onEditPress }: {isRunning:boolean, id:string, project:string, title:string, elapsed:number, onEditPress:()=> void}) {
     const elapsedString = millisecondsToHuman(elapsed);
+    const dispatch = useDispatch();
+
+    const removeTimerFromTimerButton =(id:string)=>{
+        dispatch(removeTimer(id));
+    }
     return (
         <View style={styles.timerContainer}>
             <Text style={styles.title}>{title}</Text>
@@ -14,7 +20,7 @@ export default function Timer({isRunning, id, title, project, elapsed, onEditPre
             <Text style={styles.elapsedTime}>{elapsedString}</Text>
             <View style={styles.buttonGroup}>
                 <TimerButton onPress={onEditPress} color="blue" small title="Edit"  />
-                <TimerButton onPress={()=>{console.log("hola")}} color="blue" small title="Remove" />
+                <TimerButton onPress={()=>removeTimerFromTimerButton(id)} color="blue" small title="Remove" />
             </View>
             <TimerButton small onPress={()=>{console.log("hola")}} color="#21BA45" title="Start" />
         </View>

@@ -7,11 +7,7 @@ import { TimerData } from '../types/types';
 
 
 const Timer = () => {
-  const {ListTimers}  = useSelector((state:any)=> state)
-  console.log(ListTimers)
-
-  
-
+  const {ListTimers}  = useSelector((state:any)=> state);
   return (
     <View style={styles.appContainer}>
       <View style={styles.titleContainer}>
