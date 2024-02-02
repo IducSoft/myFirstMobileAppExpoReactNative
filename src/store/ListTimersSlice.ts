@@ -9,14 +9,14 @@ let initialState: ListTimers = [
         project: 'House Chores',
         id: random(),
         elapsed: 0,
-        isRunning: true,
+        isRunning: false,
     },
     {
         title: 'Bake squash',
         project: 'Kitchen Chores',
         id: random(),
         elapsed: 0,
-        isRunning: true,
+        isRunning: false,
     },
 ];
 
@@ -54,9 +54,34 @@ export const ListTimersReducer = createSlice({
             
             
         },
+        addCounterTime:(state, {payload})=>{
+            for (let index = 0; index < state.length; index++) {
+                const element = {...state[index]};
+                if(element.id === payload){
+                    state[index] = {...element, elapsed: state[index].elapsed + 1}
+                }
+            }
+            
+        },
+        startAddCounterTime:(state, {payload})=>{
+            for (let index = 0; index < state.length; index++) {
+                const element = {...state[index]};
+                if(element.id === payload){
+                    state[index] = {...element, isRunning: true}
+                }
+            }
+        },
+        stopAddCounterTime:(state,{payload})=>{
+            for (let index = 0; index < state.length; index++) {
+                const element = {...state[index]};
+                if(element.id === payload){
+                    state[index] = {...element, isRunning: false}
+                }
+            }
+        },
     }
 })
 
-export const { addNewTimer, editTimer, removeTimer } = ListTimersReducer.actions;
+export const { addNewTimer, editTimer, removeTimer, addCounterTime, stopAddCounterTime, startAddCounterTime } = ListTimersReducer.actions;
 
 export default ListTimersReducer.reducer;

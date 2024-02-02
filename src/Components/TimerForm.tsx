@@ -13,6 +13,7 @@ export default function TimerForm({onFormSubmit, onFormClose, id, title, project
         {
             title: title || '',
             project: project || '',
+            elapsed:0,
         }
     )
     const handleChange = (field:string, value: string) => {
