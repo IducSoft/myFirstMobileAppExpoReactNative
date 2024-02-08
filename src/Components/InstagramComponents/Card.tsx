@@ -38,8 +38,8 @@ export default Card
 
 const styles = StyleSheet.create({
     image: {
-        aspectRatio: 1,
-        backgroundColor: 'rgba(0,0,0,0.02)',
+      aspectRatio: 1,
+      backgroundColor: 'rgba(0,0,0,0.02)',
     },
     absoluteFill:{
       position: 'absolute',

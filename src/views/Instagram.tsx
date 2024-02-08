@@ -1,7 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import CardList from '../Components/InstagramComponents/CardList'
-
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import CardList from '../Components/InstagramComponents/CardList';
 
 
 const Instagram = () => {
@@ -12,7 +11,7 @@ const Instagram = () => {
   )
 }
 
-export default Instagram
+export default Instagram;
 
 const styles = StyleSheet.create({
     

@@ -31,15 +31,15 @@ const CardList = () => {
     }
   return (
     <View>
-     <FlatList
-        data={listaDepostales}
-        renderItem={(item)=>{
-            console.log({...item.item})
-            return(
-                renderItem({...item.item})
-            )
-        }}
-     />
+      <FlatList
+          data={listaDepostales}
+          renderItem={(item)=>{
+              console.log({...item.item})
+              return(
+                  renderItem({...item.item})
+              )
+          }}
+      />
     </View>
   )
 }
