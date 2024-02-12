@@ -2,6 +2,16 @@ import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Card from './Card'
 
+type comment = {
+  id:string,
+  author:"string",
+}
+
+type commentsLists ={
+  commentsForItem: comment[],
+  onPressComments:()=>void,
+}
+
 const CardList = () => {
 
     const listaDepostales = [

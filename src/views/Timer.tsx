@@ -4,6 +4,7 @@ import EditableTimer from '../Components/EditableTimer';
 import ToggleableTimerForm from '../Components/ToggleableTimerForm';
 import { useSelector } from 'react-redux';
 import { TimerData } from '../types/types';
+import ModalComponent from '../Components/ModalComponent';
 
 
 const Timer = () => {
@@ -12,6 +13,7 @@ const Timer = () => {
     <View style={styles.appContainer}>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Timers</Text>
+        <ModalComponent/>
       </View>
     <ScrollView style={styles.timerList}>
 
